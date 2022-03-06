@@ -15,23 +15,23 @@
 <body>
   <div class="container-fluid">
     <div class="container">
-      <button class="btn btn-outline-primary rounded-pill sign_in"> Sign In </button>
+      <button class="btn btn-outline-primary rounded-pill sign_in" data-bs-toggle="modal" data-bs-target="#sign_in">Sign In </button>{% include 'authens/signin.html' %}
     </div>
-    <div class=" container-fluid welcome_title d-md-none d-lg-block" id="para_lg">
-      <img style="width: 20%;" src="{% static 'images/logo.png' %}" alt="">
+    <div class=" container-fluid welcome_title d-md-none d-lg-block " id="para_lg ">
+      <img style="width: 20%; " src="{% static 'images/logo.png' %} " alt=" ">
       <h1>Welcome to Prime InstaClone</h1>
       <p>Your passion is capturing great moments. So is ours.share captured moments with your friends</p>
-      <button class="btn btn-outline-primary rounded-pill ">Create Account Now</button>
+      <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#sign_up">Create Account Now</button> {% include 'authens/signup.html' %}
     </div>
-    <!-- <div class=" container-fluid welcome_title .d-none" id="para_sm">
-      <img style="width: 10%;" src="{% static 'images/logo.png' %}" alt="">
+    <!-- <div class=" container-fluid welcome_title .d-none " id="para_sm ">
+      <img style="width: 10%; " src="{% static 'images/logo.png' %} " alt=" ">
       <h1>Welcome to Prime InstaClone</h1>
       <p>Your passion is capturing great moments. So is ours.share captured moments with your friends</p>
       <button class="btn btn-outline-primary rounded-pill ">Create Account Now</button>
     </div> -->
   </div>
   {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
   {% bootstrap_javascript %} {% endblock %}
 </body>
 
