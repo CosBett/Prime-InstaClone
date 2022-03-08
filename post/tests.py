@@ -21,4 +21,7 @@ class TestUser_profile(TestCase):
         after = User_profile.objects.all()
         self.assertTrue(len(after) > 0)
 
-   
+    def test_delete_profile(self):
+        self.profile_test.delete_profile()
+        profile = User_profile.objects.all()
+        self.assertTrue(len(profile) == 0)    
