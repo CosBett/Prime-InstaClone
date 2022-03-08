@@ -47,4 +47,10 @@ class Post(models.Model):
     def get_absolute_url(self):
         return f"/post/{self.id}"
 
+    def save_image(self):
+        self.save()
+
+    def delete_image(self):
+        self.delete()    
+
     
