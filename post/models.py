@@ -27,9 +27,16 @@ class User_profile(models.Model):
 
     def delete_profile(self):
         self.delete()  
-           
+
     @classmethod
     def search_profile(cls, name):
         return cls.objects.filter(user__username__icontains=name).all()
     
 
+class Post(models.Model):
+    user = models.ForeignKey(User_profile, on_delete=models.CASCADE, related_name='posts')
+    image = models.ImageField(upload_to='posts/')
+    name = models.CharField(max_length=100, blank=True)
+    created = models.DateTimeField(auto_now_add=True, null=True)
+    caption = models.CharField(max_length=500, blank=True)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True, )
