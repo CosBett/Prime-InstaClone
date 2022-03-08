@@ -39,4 +39,12 @@ class Post(models.Model):
     name = models.CharField(max_length=100, blank=True)
     created = models.DateTimeField(auto_now_add=True, null=True)
     caption = models.CharField(max_length=500, blank=True)
-    likes = models.ManyToManyField(User, related_name='likes', blank=True, )
+    likes = models.ManyToManyField(User, related_name='likes', blank=True,)
+
+    class Meta:
+        ordering = ["-pk"]
+
+    def get_absolute_url(self):
+        return f"/post/{self.id}"
+
+    
