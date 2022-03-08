@@ -35,3 +35,17 @@ class TestPost(TestCase):
     def test_insatance(self):
         self.assertTrue(isinstance(self.image_test, Post))
 
+    def test_save_image(self):
+        self.image_test.save_image()
+        images = Post.objects.all()
+        self.assertTrue(len(images) > 0)
+
+    def test_delete_image(self):
+        self.image_test.delete_image()
+        post = User_profile.objects.all()
+        self.assertTrue(len(post) == 0)
+    
+    def tearDown(self):
+        User_profile.objects.all().delete()
+        Post.objects.all().delete()    
+
