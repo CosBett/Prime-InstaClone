@@ -58,4 +58,9 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.user.name} Post'
 
-    
+class Follow(models.Model):
+    followers = models.ForeignKey(User_profile, on_delete=models.CASCADE, related_name= 'following') 
+    followers = models.ForeignKey(User_profile, on_delete=models.CASCADE, related_name= 'followers')     
+
+    def __str__(self):
+        return f'{self.follower} Follow'
