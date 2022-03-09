@@ -4,5 +4,6 @@ confusable-homoglyphs==3.2.0
 Django==4.0.3
 django-bootstrap5==21.3
 django-registration==3.2
+Pillow==9.0.1
 soupsieve==2.3.1
 sqlparse==0.4.2
