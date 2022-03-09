@@ -1,3 +1,5 @@
+{% load django_bootstrap5 %}
+
 <div class="modal-dialog modal-dialog-centered rounded-3">
   <div class="modal fade" id="sign_up" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -7,9 +9,17 @@
           <button style="font-weight: 500;font-size: x-large;" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></i></button>
         </div>
         <div class="modal-body">
-        </div>
+          <form action="" method="post">
+            {% csrf_token %} {% bootstrap_form form %}
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+            </div>
 
-        <div class=" modal-footer ">
+            <input type="hidden" name="next" value="{{next}}">
+
+          </form>
+        </div>
+        <div class="modal-footer">
         </div>
       </div>
     </div>
