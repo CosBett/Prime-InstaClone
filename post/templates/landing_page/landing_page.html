@@ -15,15 +15,15 @@
 <body>
   <div class="container-fluid">
     <div class="container">
-      <button class="btn btn-outline-primary rounded-pill sign_in" data-bs-toggle="modal" data-bs-target="#sign_in">Sign In </button>{% include 'authens/signin.html' %}
+      <a class="btn btn-outline-primary rounded-pill sign_in" href="{% url 'signup' %}">Create Account</a>
     </div>
     <div class=" container-fluid welcome_title d-md-none d-lg-block " id="para_lg ">
       <img style="width: 20%; " src="{% static 'images/logo.png' %} " alt=" ">
       <h1>Welcome to Prime InstaClone</h1>
       <p>Your passion is capturing great moments. So is ours.share captured moments with your friends</p>
-      <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#sign_up">Create Account Now</button>
+      <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#sign_in">Sign in </button>
       <div class="modal-dialog modal-dialog-centered rounded-3">
-        <div class="modal fade" id="sign_up" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="sign_in" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
@@ -31,7 +31,6 @@
                 <button style="font-weight: 500;font-size: x-large;" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></i></button>
               </div>
               <div class="modal-body">
-
                 <form action="" method="post" novalidate>
                   {% csrf_token%} {{ form|crispy }}
                   <button type="submit" class="btn btn-primary btn-sm"> Sign up</button>
