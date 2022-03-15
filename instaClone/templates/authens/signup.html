@@ -9,13 +9,9 @@
           <button style="font-weight: 500;font-size: x-large;" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></i></button>
         </div>
         <div class="modal-body">
-          <form action="" method="post">
-            <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
-            </div>
-
-            <input type="hidden" name="next" value="{{next}}">
-
+          <form action="" method="post" novalidate>
+            {% csrf_token%} {{ form|crispy}}
+            <button type="submit" class="btn btn-primary btn-sm"> Sign up</button>
           </form>
         </div>
         <div class="modal-footer">

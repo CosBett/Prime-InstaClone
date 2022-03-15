@@ -3,7 +3,9 @@ beautifulsoup4==4.10.0
 confusable-homoglyphs==3.2.0
 Django==4.0.3
 django-bootstrap5==21.3
+django-crispy-forms==1.14.0
 django-registration==3.2
 Pillow==9.0.1
+psycopg2==2.9.3
 soupsieve==2.3.1
 sqlparse==0.4.2
