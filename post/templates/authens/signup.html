@@ -1,0 +1,11 @@
+ {% extends 'authens/base.html' %}{% load crispy_forms_tags %}{% block content %}
+<div class="row container">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <form action="" method="post" novalidate>
+      {% csrf_token%} {{ form|crispy }}
+      <button type="submit" class="btn btn-primary btn-sm"> Sign up</button>
+    </form>
+  </div>
+  <div class="col-md-4"></div>
+</div>{% endblock %}

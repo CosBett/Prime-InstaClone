@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django_bootstrap5",
     'post',
+    'crispy_forms',
+    "crispy_bootstrap5",
      
 ]
 
@@ -52,6 +54,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 ROOT_URLCONF = 'instaClone.urls'
 
@@ -85,8 +91,6 @@ DATABASES ={
     'PASSWORD':'password.',
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators

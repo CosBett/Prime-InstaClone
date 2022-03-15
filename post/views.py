@@ -4,8 +4,9 @@ from .models import User_profile,Post, Comment, Follow
 from django.contrib.auth import authenticate, login
 # Create your views here.
 def index(request):
-    
-    return render(request, 'landing_page/landing_page.html') 
+     form = SignupForm()
+     landing_context = {'form': form} 
+     return render(request,'landing_page/landing_page.html',landing_context) 
 
 # view function for account creation.    
 def sign_up(request):
@@ -18,11 +19,11 @@ def sign_up(request):
             user = authenticate(username=username, password= raw_password)
             login(request, user)
             
-            return redirect(index)
+            return redirect('index')
     else :
         form = SignupForm()
 
     landing_context = {'form': form}    
     
-    return render(request, 'landing_page/landing_page.html', landing_context) 
+    return render(request, 'authens/signup.html', landing_context) 
 
