@@ -9,12 +9,23 @@ from django.contrib.auth.models import User
 # View function for homepage and login 
 
 def landing_page(request):
-     
+  
      return render(request,'landing_page/landing_page.html') 
 
+def log_in(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect('homepage')
+       
+    else:
+        return redirect('login')
+        
 @login_required(login_url='login')
 def index(request):
-    images = Post.objects.all()
+    posts = Post.objects.all()
     users = User.objects.exclude(id=request.user.id)
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -25,7 +36,7 @@ def index(request):
             return HttpResponseRedirect(request.path_info)
     else:
         form = PostForm()
-    index_context = {'images': images,'form': form,'users': users}
+    index_context = {'posts': posts,'form': form,'users': users}
 
     return render(request, 'index.html', index_context)
 
@@ -40,11 +51,11 @@ def sign_up(request):
             user = authenticate(username=username, password= raw_password)
             login(request, user)
             
-            return redirect('homepage')
+            return redirect('login')
     else :
         form = SignupForm()
 
     landing_context = {'form': form}    
     
-    return render(request, 'authens/signup.html', landing_context) 
+    return render(request, 'registration/signup.html', landing_context) 
 

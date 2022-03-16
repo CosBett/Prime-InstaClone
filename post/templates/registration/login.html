@@ -1,4 +1,4 @@
-{% extends 'authens/base.html' %}{% load django_bootstrap5 %}{% block content %}
+{% extends 'registration/base.html' %}{% load django_bootstrap5 %}{% load crispy_forms_tags %} {% block content %}
 <div class="modal-dialog modal-dialog-centered rounded-3">
   <div class="modal fade" id="sign_in" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -8,12 +8,11 @@
           <button style="font-weight: 200;font-size: large;" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></i></button>
         </div>
         <div class="modal-body">
+          <h2>showing</h2>
           <form action="/accounts/register/" method="post">
-
             <div class="form-group">
               <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
             </div>
-
             <input type="hidden" name="next" value="">
           </form>
         </div>
