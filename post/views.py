@@ -59,3 +59,18 @@ def sign_up(request):
     
     return render(request, 'registration/signup.html', landing_context) 
 
+login_required(login_url='login')
+def profile(request, username):
+    images = request.user.profile.posts.all()
+    if request.method == 'POST':
+        user_form = Update_profileForm(request.POST, instance=request.user)
+        prof_form = Update_UserForm(request.POST, request.FILES, instance=request.user.profile)
+        if user_form.is_valid() and prof_form.is_valid():
+            user_form.save()
+            prof_form.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        userform = Update_profileForm(instance=request.user)
+        profileform = Update_UserForm(instance=request.user.profile)
+    profile_context = {'userform': userform,'profform': profileform,'images': images }
+    return render(request, 'instagram/profile.html', profile_context)
