@@ -1,10 +1,12 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render,redirect
 from .forms import SignupForm, Update_profileForm, Update_UserForm, PostForm, CommentForm
 from .models import User_profile,Post, Comment, Follow
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.template.loader import render_to_string
+
 
 # View function for homepage and login 
 
@@ -113,4 +115,19 @@ def post_comments(request, id):
     comments_context= {'image': image,'form': form, 'is_liked': is_liked,'total_likes': image.total_likes()
     }
     return render(request, 'comments_post.html', comments_context)
+
+def like_post(request):
+    image = get_object_or_404(Post, id=request.POST.get('id'))
+    is_liked = False
+    if image.likes.filter(id=request.user.id).exists():
+        image.likes.remove(request.user)
+        is_liked = False
+    else:
+        image.likes.add(request.user)
+        is_liked = False
+    liked_context = {'image': image,'is_liked': is_liked,'total_likes': image.total_likes()
+    }
+    if request.is_ajax():
+        html = render_to_string('likes.html', liked_context, request=request)
+        return JsonResponse({'form': html})
 
