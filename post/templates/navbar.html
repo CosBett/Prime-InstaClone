@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg " id="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'homepage' %}"> Prime Instaclone </a>
+    <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span ><i class="fa fa-bars  fa-lg white-text mr-md-5 mr-3 fa-2x d-lg-none"></i></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item ">
+          <a class="nav-link active " aria-current="page " href="{% url 'homepage' %} ">Home</a>
+        </li>
+        <li class="nav-item ">
+          <form class="d-flex " role="search " action=" ">
+            <input class="form-control me-2 rounded-pill " type="text " placeholder="Search Project " aria-label="Search " name="searchImg ">
+            <button class="btn btn-outline-success rounded-pill " type="submit ">Search</button>
+          </form>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-right ">
+        <li class="nav-item dropdown ">
+          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false "> Profile </a>
+          <div class="dropdown-menu dropdown-primary " aria-labelledby="navbarDropdownMenuLink ">
+            <a class="dropdown-item text-center ">Profile</a>
+            <hr>
+            <a class="dropdown-item text-center "> Edit profile</a>
+            <hr>
+            <a class="text-secondary text-center dropdown-item ">Log Out</a>
+          </div>
+        </li>
+        <a href="{% url 'login' %} " class="login btn btn-sm btn-info "> REGISTER/LOGIN </a>
+        <button class="btn btn-info btn-sm " data-toggle="modal " data-target=".bd-example-modal-xl ">  another</button>
+      </ul>
+    </div>
+  </div>
+</nav>
