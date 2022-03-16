@@ -1,5 +1,5 @@
 from django.http import HttpResponseRedirect
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from .forms import SignupForm, Update_profileForm, Update_UserForm, PostForm, CommentForm
 from .models import User_profile,Post, Comment, Follow
 from django.contrib.auth import authenticate, login
@@ -65,12 +65,31 @@ def profile(request, username):
     if request.method == 'POST':
         user_form = Update_profileForm(request.POST, instance=request.user)
         prof_form = Update_UserForm(request.POST, request.FILES, instance=request.user.profile)
-        if user_form.is_valid() and prof_form.is_valid():
-            user_form.save()
-            prof_form.save()
+        if userform.is_valid() and prof_form.is_valid():
+            userform.save()
+            profileform.save()
             return HttpResponseRedirect(request.path_info)
     else:
         userform = Update_profileForm(instance=request.user)
         profileform = Update_UserForm(instance=request.user.profile)
-    profile_context = {'userform': userform,'profform': profileform,'images': images }
-    return render(request, 'instagram/profile.html', profile_context)
+        
+    profile_context = {'userform': userform,'profileform': profileform,'images': images }
+    return render(request, 'profile.html', profile_context)
+
+login_required(login_url='login')
+def user_profile(request, username):
+    userprofile = get_object_or_404(User, username=username)
+    if request.user == userprofile:
+        return redirect('profile', username=request.user.username)
+    user_posts = userprofile.profile.posts.all()
+    
+    followers = Follow.objects.filter(followed=userprofile.profile)
+    follow_status = None
+    for follower in followers:
+        if request.user.profile == follower.follower:
+            follow_status = True
+        else:
+            follow_status = False
+    userprofile_context = { 'userprofile': userprofile, 'user_posts': user_posts, 'followers': followers, 'follow_status': follow_status }
+
+    return render(request, 'userprofile.html', userprofile_context)
