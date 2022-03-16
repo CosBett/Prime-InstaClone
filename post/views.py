@@ -40,7 +40,7 @@ def sign_up(request):
             user = authenticate(username=username, password= raw_password)
             login(request, user)
             
-            return redirect('index')
+            return redirect('homepage')
     else :
         form = SignupForm()
 
