@@ -131,3 +131,14 @@ def like_post(request):
         html = render_to_string('likes.html', liked_context, request=request)
         return JsonResponse({'form': html})
 
+@login_required(login_url='login')
+def search_profile(request):
+    if 'search_user' in request.GET and request.GET['search_user']:
+        name = request.GET.get("search_user")
+        results = User_profile.search_profile(name)
+        message = f'name'
+        search_context= { 'results': results, 'message': message }
+        return render(request, 'search.html', search_context)
+    else:
+        message = "Please search for a valid username"
+    return render(request, 'search.html',{'message': message})

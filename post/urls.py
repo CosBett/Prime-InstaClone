@@ -12,5 +12,6 @@ urlpatterns = [
     path('userprofile/<username>/', views.user_profile, name='userprofile'),
     path('profile/<username>/',views.profile, name='profile'),
     path('post/<id>', views.post_comments, name='comment'),
-
+    path('search/', views.search_profile, name='search'),
+    path('likes', views.like_post, name='likes'),
 ]
