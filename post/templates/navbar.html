@@ -15,8 +15,9 @@
         </li>
       </ul>
       <div class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Profile
+        <a href="{% url 'profile' user.username %}"> {{user.profile_picture.url}}</a>
+        <a class="nav-link dropdown-toggle" href="{% url 'profile' user.username %}" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{{image.user.profile_picture.url}}" class="rounded-circle border ml-3 mt-2  mr-3" alt="{{image.user.user.username}}" width="35" height="35">
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
           <li>

@@ -1,10 +1,10 @@
 {% extends 'base.html' %} {% load static %} {% load crispy_forms_tags %} {% block content %}
 
 <div class="row">
-  <div class="col-md-2"></div>
-  <div class="col-md-7 container">
+  <div class="col-md-3"></div>
+  <div class="col-md-6 container">
     <div>
-      <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#upload_image">Upload image </button>
+      <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" id="postpic" data-bs-target="#upload_image">Post picture </button>
       <div class="modal-dialog modal-dialog-centered rounded-3">
         <div class="modal fade" id="upload_image" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
@@ -16,7 +16,7 @@
               <div class="modal-body">
                 <form action="" method="post" enctype="multipart/form-data" novalidate>
                   {% csrf_token%} {{ form|crispy }}
-                  <button type="submit" class="btn btn-primary btn-sm"> Post</button>
+                  <button type="submit" class="btn btn-outline-primary btn-sm"> Post</button>
                 </form>
               </div>
               <div class="modal-footer">
@@ -27,16 +27,17 @@
       </div>
     </div>
     {% for image in images %}
-    <div class="card">
+    <div class="card mb-2">
       <div class="card-title">
-        <h1> image title</h1>
+        <img src="{{image.user.profile_picture.url}}" class="rounded-circle border ml-3 mt-2  mr-3" alt="{{image.user.user.username}}" width="35" height="35">
+        <a href="{% url 'userprofile' image.user.user.username  %}" class="mt-4 user">{{image.user.user.username|title}}</a>
       </div>
       <div class="card-body"></div><img src="{{image.image.url}}" class="card-img">
     </div>
     <div class="card-footer">
-      {{post.caption}}
+      {{image.caption}}
     </div> {% endfor %}
   </div>
-  <div class="col-md-03"></div>
+  <div class="col-md-3"></div>
 </div>
 {% endblock %}

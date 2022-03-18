@@ -66,9 +66,9 @@ login_required(login_url='login')
 def profile(request, username):
     images = request.user.profile.posts.all()
     if request.method == 'POST':
-        user_form = Update_profileForm(request.POST, instance=request.user)
-        prof_form = Update_UserForm(request.POST, request.FILES, instance=request.user.profile)
-        if userform.is_valid() and prof_form.is_valid():
+        userform = Update_profileForm(request.POST, instance=request.user)
+        profileform = Update_UserForm(request.POST, request.FILES, instance=request.user.profile)
+        if userform.is_valid() and profileform.is_valid():
             userform.save()
             profileform.save()
             return HttpResponseRedirect(request.path_info)

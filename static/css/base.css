@@ -21,3 +21,10 @@
   position: relative;
   left: 0;
 }
+
+#postpic {
+  color: #FE66B9;
+  width: 40%;
+  font-size: larger;
+  margin-top: 5%;
+}
