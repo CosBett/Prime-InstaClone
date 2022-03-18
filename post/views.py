@@ -27,7 +27,8 @@ def log_in(request):
         
 @login_required(login_url='login')
 def index(request):
-    posts = Post.objects.all()
+    images = Post.objects.all()
+    print('IMG', images)
     users = User.objects.exclude(id=request.user.id)
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
@@ -38,7 +39,7 @@ def index(request):
             return HttpResponseRedirect(request.path_info)
     else:
         form = PostForm()
-    index_context = {'posts': posts,'form': form,'users': users}
+    index_context = {'images': images,'form': form,'users': users}
 
     return render(request, 'index.html', index_context)
 
@@ -142,3 +143,18 @@ def search_profile(request):
     else:
         message = "Please search for a valid username"
     return render(request, 'search.html',{'message': message})
+
+def follow(request, to_follow):
+    if request.method == 'GET':
+        userprofile = User_profile.objects.get(pk=to_follow)
+        followers = Follow(follower=request.user.profile, followed=userprofile)
+        followers.save()
+
+        return redirect('userprofile', userprofile.user.username)
+
+def unfollow(request, to_unfollow):
+    if request.method == 'GET':
+        user_profile = User_profile.objects.get(pk=to_unfollow)
+        unfollow = Follow.objects.filter(follower=request.user.profile, followed=user_profile)
+        unfollow.delete()
+        return redirect('userprofile', user_profile.user.username)

@@ -1,35 +1,33 @@
-<nav class="navbar navbar-expand-lg " id="navbar">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'homepage' %}"> Prime Instaclone </a>
-    <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span ><i class="fa fa-bars  fa-lg white-text mr-md-5 mr-3 fa-2x d-lg-none"></i></span>
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg">
+  <div class=" container-fluid ">
+    <a class="navbar-brand " id="navbrand " href="{% url 'homepage' %} "> <img style="width: 60%; " src="{% static 'images/pinsta.png' %} " alt=" "></a>
+    <button class="navbar-toggler " type="button " data-bs-toggle="collapse " data-bs-target="#navbarSupportedContent " aria-controls="navbarSupportedContent " aria-expanded="false " aria-label="Toggle navigation ">
+      <span class="navbar-toggler-icon "></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse " id="navbarSupportedContent ">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <li class="nav-item ">
-          <a class="nav-link active " aria-current="page " href="{% url 'homepage' %} ">Home</a>
-        </li>
-        <li class="nav-item ">
-          <form class="d-flex " role="search " action=" ">
-            <input class="form-control me-2 rounded-pill " type="text " placeholder="Search Project " aria-label="Search " name="searchImg ">
-            <button class="btn btn-outline-success rounded-pill " type="submit ">Search</button>
+          <form class="mb-0 h1 ml-auto mr-auto " id="searchform " action="{% url 'search' %} ">
+            <input name="search_user " autocomplete="off " id="searching " class="form-control d-none d-md-block " placeholder="Search ">
+            <i class="spinner "></i>
           </form>
         </li>
       </ul>
-      <ul class="navbar-nav navbar-right ">
-        <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle " id="navbarDropdownMenuLink " data-toggle="dropdown " aria-haspopup="true " aria-expanded="false "> Profile </a>
-          <div class="dropdown-menu dropdown-primary " aria-labelledby="navbarDropdownMenuLink ">
-            <a class="dropdown-item text-center ">Profile</a>
-            <hr>
-            <a class="dropdown-item text-center "> Edit profile</a>
-            <hr>
-            <a class="text-secondary text-center dropdown-item ">Log Out</a>
-          </div>
-        </li>
-        <a href="{% url 'login' %} " class="login btn btn-sm btn-info "> REGISTER/LOGIN </a>
-        <button class="btn btn-info btn-sm " data-toggle="modal " data-target=".bd-example-modal-xl ">  another</button>
-      </ul>
+      <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Profile
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li>
+            <a class="dropdown-item" id="navitems" href="#">Edit Profile</a>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" id="navitems"  href="#">Logout</a></li>
+        </ul>
+      </div>
     </div>
   </div>
 </nav>

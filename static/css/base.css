@@ -1,0 +1,23 @@
+#navbrand {
+  color: #FE66B9;
+  font-size: xx-large;
+  font-family: 'Fredericka the Great', cursive;
+  text-shadow: black;
+}
+
+#navitems {
+  color: #1471FD;
+  font-size: larger;
+  font-family: 'Castoro', serif;
+}
+
+#navbarDropdown {
+  color: #1471FD;
+  font-size: larger;
+  font-family: 'Castoro', serif;
+}
+
+.nav-item {
+  position: relative;
+  left: 0;
+}
