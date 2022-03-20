@@ -23,7 +23,12 @@
 
 <body>
   <div class="container-fluid">
-    {% include 'navbar.html'%}
+    {% if messages %} {% for message in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %} {% endif %} {% include 'navbar.html'%}
     <div class="container">
       {% block content %} {% endblock %}
     </div>

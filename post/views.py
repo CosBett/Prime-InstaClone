@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
+from django.contrib import messages
+
 
 
 # View function for homepage and login 
@@ -15,15 +17,19 @@ def landing_page(request):
      return render(request,'landing_page/landing_page.html') 
 
 def log_in(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect('landing_page')
+    if request.method =='POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('homepage')
+        else:
+            messages.success(request, ("There Was An Error Logging In, Try Again..."))	
+            return redirect('login')
     else:
-        return redirect('signup')
-        
+		    return render(request, 'registration/login.html', {})
+
 @login_required(login_url='login')
 def index(request):
     images = Post.objects.all()

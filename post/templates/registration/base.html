@@ -15,7 +15,17 @@
   <link rel="stylesheet" href="{% static 'css/authens.css' %}">{% endblock %}
 </head>
 
-<body>{% block content %} {% endblock %}{% block scripts %}
+<body>
+  <div class="container">
+    {% if messages %} {% for message in messages %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+    {% endfor %} {% endif %} {% block content %} {% endblock %}
+  </div>{% block scripts %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
   {% bootstrap_javascript %} {% endblock %}
 </body>
