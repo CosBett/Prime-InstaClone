@@ -2,7 +2,7 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, render,redirect
 from .forms import SignupForm, Update_profileForm, Update_UserForm, PostForm, CommentForm
 from .models import User_profile,Post, Comment, Follow
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.template.loader import render_to_string
@@ -20,7 +20,7 @@ def log_in(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return redirect('home')
+        return redirect('landing_page')
     else:
         return redirect('signup')
         
@@ -53,7 +53,7 @@ def sign_up(request):
             user = authenticate(username=username, password= raw_password)
             login(request, user)
             
-            return redirect('login')
+            return redirect('homepage')
     else :
         form = SignupForm()
 
@@ -158,3 +158,7 @@ def unfollow(request, to_unfollow):
         unfollow = Follow.objects.filter(follower=request.user.profile, followed=user_profile)
         unfollow.delete()
         return redirect('userprofile', user_profile.user.username)
+
+def logout_view(request):
+    logout(request)
+    return redirect('landing_page')
