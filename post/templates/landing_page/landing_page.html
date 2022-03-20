@@ -21,7 +21,7 @@
       <img style="width: 20%; " src="{% static 'images/logo.png' %} " alt=" ">
       <h1>Welcome to Prime InstaClone</h1>
       <p>Your passion is capturing great moments. So is ours.share captured moments with your friends</p>
-      <button class="btn btn-outline-primary rounded-pill" data-bs-toggle="modal" data-bs-target="#sign_in">Sign in </button>{%include 'registration/login.html'%}
+      <a href="{% url 'login' %}" class="btn btn-outline-primary rounded-pill">Sign in </a>
 
       <!-- <div class=" container-fluid welcome_title .d-none " id="para_sm ">
       <img style="width: 10%; " src="{% static 'images/logo.png' %} " alt=" ">

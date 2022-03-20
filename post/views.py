@@ -20,10 +20,9 @@ def log_in(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return redirect('homepage')
-       
+        return redirect('home')
     else:
-        return redirect('login')
+        return redirect('signup')
         
 @login_required(login_url='login')
 def index(request):
@@ -131,6 +130,7 @@ def like_post(request):
     if request.is_ajax():
         html = render_to_string('likes.html', liked_context, request=request)
         return JsonResponse({'form': html})
+        
 
 @login_required(login_url='login')
 def search_profile(request):

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'post',
     'crispy_forms',
     "crispy_bootstrap5",
+    'django_material_icons',
      
 ]
 
